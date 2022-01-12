@@ -1,13 +1,14 @@
 from fastapi import FastAPI  #導入fastapi
 import uvicorn
-from routers import webhooks
+from routers.webhooks import line_app
 from enum import Enum
 #uvicorn main:app --reload
 #uvicorn main:app --debug 
 # 添加--debug，它将在文件更新时自动重新加载，这在开发过程中非常方便。
 app = FastAPI()         #創建一個fastapi應用
 
-app.include_router(webhooks.router) #注册 APIRouter
+# app.include_router(webhooks.router) #注册 APIRouter
+app.include_router(line_app) #注册 APIRouter
 
 @app.get("/item/{item_id}")   #創建一個route路徑用get方法
 async def root(item_id:int):      #function 傳入參數 :int 型態

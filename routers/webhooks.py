@@ -14,18 +14,18 @@ config.read('config.ini')
 line_bot_api = LineBotApi(config.get('line-bot', 'channel_access_token'))
 handler = WebhookHandler(config.get('line-bot', 'channel_secret'))
 
-router = APIRouter(
-    prefix="/webhooks",
-    tags=["chatbot"],
-    responses={404: {"description": "Not found"}},
-)
-
+# router = APIRouter(
+#     prefix="/webhooks",   #参数，路由的前缀
+#     tags=["chatbot"],
+#     responses={404: {"description": "123"}}, # 指特定于该路径下的响应内容，如上述便指定 404 的返回信息
+# )
+line_app = APIRouter()
 class Line(BaseModel):
     destination: str
     events: List[Optional[None]]
 
 
-@router.post("/line")
+@line_app.post("/callback")
 async def callback(request: Request, x_line_signature: str = Header(None)):
     body = await request.body()
     try:
