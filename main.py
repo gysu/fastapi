@@ -37,5 +37,5 @@ async def get_model(model_name:ModelName):      #function 傳入參數 :int 型�
 async def read_file(file_path: str):
     return {"file_path": file_path}
 
-# if __name__ == "__main__":
-#     uvicorn.run("main:app", host="127.0.0.1", port=8000, reload=True)
+if __name__ == "__main__":
+    uvicorn.run("main:app", host="127.0.0.1", port=8000, reload=True)
