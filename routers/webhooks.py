@@ -40,7 +40,7 @@ def message_text(event):
     print("!!!!!!!!!!!!!!!!!!!!!!")
     print(event)
     print("!!!!!!!!!!!!!!!!!!!!!!")
-    msg=TextSendMessage(text= 'you said: {event.message.text}')
+    msg=TextSendMessage(text= f'you said: {event.message.text}')
     line_bot_api.reply_message(
         event.reply_token,msg
         
