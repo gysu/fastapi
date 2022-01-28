@@ -25,7 +25,7 @@ class Line(BaseModel):
     events: List[Optional[None]]
 
 
-@line_app.post("/callback")
+@line_app.post("/api/line")
 async def callback(request: Request, x_line_signature: str = Header(None)):
     body = await request.body()
     try:
